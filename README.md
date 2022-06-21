@@ -1,12 +1,10 @@
-# A Medical Dialog Annotation Tool
+# A Medical Dialogue Annotation Tool
 
-In this repository, we share a medical dialogue annotation tool. It is also the web-based tool that mentioned in the paper [A Benchmark for Automatic Medical Consultation System: Frameworks, Tasks and Datasets](https://arxiv.org/abs/2204.08997). Readers can check out with the [corresponding repository](https://github.com/lemuria-wchen/imcs21).  
+In this repository, we share a medical dialogue annotation tool. It is also the web-based tool that mentioned in the paper [A Benchmark for Automatic Medical Consultation System: Frameworks, Tasks and Datasets](https://arxiv.org/abs/2204.08997). The tool is based on Django that supports multi-level (**token-level**, **utterance-level** and **dialog-level**) annotation for medical dialogue.
 
-The tool is based on Django that supports multi-level (**token-level**, **utterance-level** and **dialog-level**) annotation for medical dialogue.
+Specifically, at the **token-level**, it supports to identify medical named entities by [BIO scheme](https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)) and standardize them; at the **utterance-level**, it supports to classify each utterance (doctor's or patient's), which in our case refers to the dialog intent; at the **dialog-level**, it supports to collect medical reports, which are required to conform to a specific format and are manually written by annotators.
 
-Specifically, at the token-level, it supports to identify medical named entities by [BIO scheme](https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)) and standardize them; at the utterance-level, it supports to classify each utterance (doctor's or patient's), which in our case refers to the dialog intent; at the dialog-level, it supports to collect medical reports, which are required to conform to a specific format and are manually written by annotators.
-
-The project is jointly developed by Qianyuan Yao and Hongyi Fang.
+The project is jointly developed by `Qianyuan Yao` and `Hongyi Fang` from [Fudan DISC](http://fudan-disc.com/).
 
 ### Requirements
 
