@@ -59,7 +59,7 @@ The project also provides a complete PDF document [here](login/static/files/æ ‡æ
 
 ### How To Cite
 
-If you extend or use this work, please cite the [paper]() where it was introduced.
+If you extend or use this work, please cite the [paper](https://arxiv.org/abs/2204.08997) where it was introduced.
 
 ```text
 @article{chen2022benchmark,
