@@ -1,0 +1,192 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>标注实例</title>
+	
+	<!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+	
+	<!-- Styles -->
+    <link href="{% static 'css/lib/scrollable/scrollable.min.css' %}" rel="stylesheet">  <!--Themes Jquery Bar Rating-->
+    <link href="{% static 'fontAwesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/mmc-chat.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/nixon.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lobipanel/css/lobipanel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<style>
+		a {
+		color:white;
+		}
+	</style>
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="active">
+						<a  href="/index/"><i class="ti-home"></i> 首页 </a>
+                    </li>					
+					
+                      
+                      
+                    <li><a href="/tagging/"><i class="ti-tag"></i> 标注主页面</a></li>
+                    <li><a href="/example1/"><i class="ti-layout-grid2-alt"></i>查看标注说明</a></li>
+					<li><a href="/check/"><i class="ti-layout-grid2-alt"></i>查看已标注文本</a></li>
+
+                    <li><a href="/logout/"><i class="ti-close"></i>登出</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+	<!-- /# sidebar -->
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img id="logoImg" src="{% static 'logo/logo.png'%}"  alt="Nixon" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>标注示例</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="main-content" id="maincontent">
+                    <div class="row" id="updatediv">
+                        <div class="col-lg-12">
+						
+                            <div class="card alert nestable-cart">
+                                <div class="card-header">
+                                    <h2  style="font-weight:bold">待标注文本</h2>
+									<p></p>
+									<p id='fatherp' style="font-size:18px"> 待标注文本序号:   <b id='textid' style="display: inline;">2</b> </p>                          
+                                </div>
+                                <div class="card-body">
+                                    <div class="example box" data-options='{"direction": "vertical", "contentSelector": ">", "containerSelector": ">"}'> 
+                                        <div id="fraud">
+                                            <p id="fraudtext" style="font-size:18px">冒充淘宝客服，以衣物质量问题主动提出退货退款，却以必须在蚂蚁借呗开通消费额度提高信誉为由方能受到退款，导致借呗的钱被不法分子利用套现到第三方未知账户。</p>
+											
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /# card -->
+                            </div>
+		
+                            <!-- /# column -->
+                        </div>	
+						<div class="col-lg-12">
+                            <div class="card alert">
+                                <div class="card-header">
+                                    <h4>标注表格</h4>
+							
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-responsive" id="pstable">
+									
+                                        <thead>
+                                            <tr>
+                                                <th style="font-weight:bold">#</th>
+                                                <th style="font-weight:bold">分句</th>
+                                                <th style="font-weight:bold">动作</th>
+                                                <th style="font-weight:bold">标签</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id = "rowcount">
+                                            <tr >
+                                                <th scope="row">1</th>
+                                                <td id="senttext{{k}}">冒充淘宝客服</td>																								   												
+												<td id = "sectioncount">通过伪造身份获取信任</td>
+												<td id = "methodcount">假冒客服/快递</td>
+                                            </tr>
+											<tr >
+                                                <th scope="row">2</th>
+                                                <td id="senttext{{k}}">以衣物质量问题主动提出退货退款</td>																								   												
+												<td id = "sectioncount">无</td>
+												<td id = "methodcount">无</td>
+                                            </tr>
+											<tr >
+                                                <th scope="row">3</th>
+                                                <td id="senttext{{k}}">却以必须在蚂蚁借呗开通消费额度提高信誉为由方能受到退款</td>																								   												
+												<td id = "sectioncount">索要钱款的理由</td>
+												<td id = "methodcount">先付后享的费用</td>
+                                            </tr>
+											<tr >
+                                                <th scope="row">4</th>
+                                                <td id="senttext{{k}}">导致借呗的钱被不法分子利用套现到第三方未知账户</td>																								   												
+												<td id = "sectioncount">无</td>
+												<td id = "methodcount">无</td>
+												
+                                            </tr>
+		
+                                
+                                        </tbody>
+					
+                                    </table>
+                                </div>
+							
+                            </div>
+							<button style="width:15%;margin:10px;float:right;" class="btn btn-primary"><a href="/tagging/">开始标注</a></button>	
+				
+							
+                        </div>
+					</div>
+
+                </div>
+                <!-- /# row -->     
+			</div>
+        </div>
+        <!-- /# container-fluid -->
+    </div>
+    <!-- /# main -->
+	
+    <script src="{% static 'js/lib/jquery.min.js'%}"></script>
+	<!-- jquery vendor -->
+	<script src="{% static 'js/lib/jquery.nanoscroller.min.js'%}"></script>
+	<!-- nano scroller -->
+	<script src="{% static 'js/lib/sidebar.js'%}"></script>
+	<!-- sidebar -->
+	<script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'js/lib/mmc-common.js'%}"></script>
+	<script src="{% static 'js/lib/mmc-chat.js'%}"></script>  
+
+	<script src="{% static 'js/lib/scrollable/holder.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollbar.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollable.min.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/scrollable.init.js'%}"></script><!-- scripit init-->
+	
+    <script src="{% static 'js/scripts.js'%}"></script><!-- scripit init-->

@@ -1,0 +1,163 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>标注说明</title>
+    <!-- ================= Favicon ================== -->
+
+    <!-- Styles -->
+	<link href="{% static 'css/lib/scrollable/scrollable.min.css' %}" rel="stylesheet">
+    <link href="{% static 'fontAwesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/mmc-chat.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/nixon.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lobipanel/css/lobipanel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<style>
+		a {
+		color:white;
+		}
+	</style>
+</head>
+
+<body>
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="active">
+                        <a  href="/index/"><i class="ti-home"></i> 首页 </a>
+                    </li>
+                      
+                      
+                    <li><a href="/tagging/"><i class="ti-tag"></i> 标注主页面</a></li>
+                    <li><a href="/check/"><i class="ti-eye"></i>查看已标注文本</a></li>
+                    <li><a href="/check1/"><i class="ti-pencil"></i> 查看诊疗报告</a></li>
+                    <li><a href="/example1/"><i class="ti-layout-grid2-alt"></i>查看标注说明</a></li>
+
+                    <li><a href="/logout/"><i class="ti-close"></i>登出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo">
+                <a href="/index/">
+                    <img id="logoImg" src="{% static 'logo/logo.png'%}"  alt="Nixon" />
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>首页</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="main-content">
+				
+					<div class="row">
+                        <div class="col-lg-12">
+                            <div class="card alert nestable-cart">
+                                <div class="card-header">
+                                    <h2 style="font-weight:bold">标注说明</h2>
+									<h4 style="font-weight:bold">请认真阅读下述说明并下载标注规范文件仔细查看！ </h4> 
+                                </div>
+                                <div class="card-body" >
+                                    <div class="example box" data-options='{"direction": "vertical", "contentSelector": ">", "containerSelector": ">"}' style="height:1000px">
+                                        <div >
+                                            <p style="font-size:16px"> &emsp;&emsp;接下来您将看到一段医生和患者的对话文本，包含疾病、患者提问和对话内容。您需要标注出以下三个内容：每句话所对应的话语行为、句子内部记录（包括实体识别和实体规范化）、每个病例的诊疗报告。具体说明如下：
+                                                <br/><br/><span style = "color:red" >（一）话语行为标注</span>
+                                                <br/>&emsp;&emsp;每句话都有其对应的话语行为（dialogue act），话语行为一共包含七类，分别是<span style = "color:red" >提问-症状、告知-症状、提问-病因、告知-病因、提问-基本信息、告知-基本信息、提问-已有检查和治疗、告知-已有检查和治疗、提问-用药建议、告知-用药建议、提问-就医建议、告知-就医建议、提问-注意事项、告知-注意事项、诊断、其他</span>。例如“医生：建议你吃点消炎药” 这句话的话语行为是“告知-用药建议”。
+                                                <br/>&emsp;&emsp;请在标注页面每句话下一行的第一个表格“请选择动作“中选择对应的话语行为。
+
+											<br/><br/><span style = "color:red" >（二）句子内部记录标注</span>
+                                                <br/>&emsp;&emsp;句子内部记录标注分为两大部分：<span style = "color:red" >实体识别以及实体规范化</span>。
+                                                <br/>&emsp;&emsp;<span style = "color:red" >1、实体识别</span>
+                                                <br/>&emsp;&emsp;实体识别是指识别出句子中重要的词组，如症状、药品名、药物类别、服用方式、检查、操作、注意事项，并对每句话的每个字打上相应的BIO标签（B：实体开始，I：实体中间，O：其他文字），BIO标签对应如下：<span style = "color:red" >0：O，1：I，2：B-症状，3：B-药品名，4：B-药物类别，5：B-服用方式等，6：B-检查，7：B-操作，8：B-注意事项</span>。
+                                                <br/>&emsp;&emsp;<span style = "color:red" >2、实体规范化</span>
+                                                <br/>&emsp;&emsp;实体规范化是针对<span style = "color:red" >“检查”</span>和<span style = "color:red" >“注意事项”</span>相关的实体提出的。
+                                                <br/>&emsp;&emsp;规范化”检查"相关的实体时，如果规范化的词与BIO标注出来的词不一样的话，就在这一实体开头（6:B-检查）的下一行写上规范化名词（只需写在一个表格中即可）；否则，则不需要填写。
+                                                <br/>&emsp;&emsp;规范化“注意事项”相关的实体时，如果该词是否定的，则在这一实体的开头（8:B-注意事项）下一行填写“X”，若为肯定，则不需要填写。
+
+                                                <br/><br/>&emsp;&emsp;初始化的BIO标签已包含了部分信息，包括<span style = "color:red" >人工标注的症状实体以及机器自动匹配的药品名和检查名</span>。
+                                                <br/>&emsp;&emsp;本次标注时<span style = "color:red" >症状实体(2:B-症状）不改动。即与症状有关的，已经标注的内容，不改；如果有新的与症状有关的内容，也不增加。</span>
+                                                <br/>&emsp;&emsp;机器自动匹配的药品名和检查名，这部分不准确，需要进一步仔细核实修改，尤其是将药物类别从药品名中分离开，将错误标注或不完善的药品名和检查名完善好。
+                                                <br/>&emsp;&emsp;BIO标注时要尽量标注出关键词，不标无关的词。
+
+											<br/><br/><span style = "color:red" >（三）诊疗报告report</span>
+                                                <br/>&emsp;&emsp;每个病例需要输出一个诊疗报告，参考框架如下：
+                                                <br/>&emsp;&emsp;（1）主诉： 主要症状或体征
+                                                <br/>&emsp;&emsp;（2）现病史： 主要症状的描述（发病情况，发病时间）
+                                                <br/>&emsp;&emsp;（3）辅检结果：病人已有的检查项目、检查结果、会诊记录等
+                                                <br/>&emsp;&emsp;（4）既往史：既往的健康状况、过去曾经患过的疾病等
+                                                <br/>&emsp;&emsp;（5）诊断：对疾病的诊断
+                                                <br/>&emsp;&emsp;（6）建议：检查建议、药物治疗、注意事项
+
+											<br/><br/>&emsp;&emsp;<span style = "color:red"><span style="font-size:20px">话语行为、各实体含义、标注案例、标注流程等内容均在标注规范文件中有所阐释，请务必点击“下载标注规范”按钮下载并仔细阅读。</span></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+							<button class="btn btn-primary" style="width:15%;margin:10px;float:right;"><a href="/tagging/">开始标注</a></button>
+							<button style="width:15%;margin:10px;float:right;" id="before"  class="btn btn-primary">
+                                <a href="{% static "files/标注规范.pdf" %}" target="_blank">下载标注规范</a> </button>
+
+
+
+                        </div>
+                    </div>
+                </div>   
+            </div>
+		</div>	
+	 </div>
+ </div>
+ <!-- /# container-fluid -->
+</div>
+<!-- /# main -->
+</div>
+<!-- /# content wrap -->
+<script src="{% static 'js/lib/jquery.min.js'%}"></script>
+<!-- jquery vendor -->
+<script src="{% static 'js/lib/jquery.nanoscroller.min.js'%}"></script>
+<!-- nano scroller -->
+<script src="{% static 'js/lib/sidebar.js'%}"></script>
+<!-- sidebar -->
+<script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+<!-- bootstrap -->
+<script src="{% static 'js/lib/mmc-common.js'%}"></script>
+<script src="{% static 'js/lib/mmc-chat.js'%}"></script>
+<script src="{% static 'js/lib/scrollable/holder.js'%}"></script><!-- scripit init-->
+<script src="{% static 'js/lib/scrollable/jquery-asScrollbar.js'%}"></script><!-- scripit init-->
+<script src="{% static 'js/lib/scrollable/jquery-asScrollable.min.js'%}"></script><!-- scripit init-->
+<script src="{% static 'js/lib/scrollable/scrollable.init.js'%}"></script><!-- scripit init-->
+<script src="{% static 'js/scripts.js'%}"></script>
+<!-- scripit init-->
+<script>
+    $(document).ready(function() {
+        $('#lobipanel-custom-control').lobiPanel({
+            reload: false,
+            close: false,
+            editTitle: false
+        });
+    });
+</script>
+</body>
+
+</html>

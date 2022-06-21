@@ -1,0 +1,182 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>查看已标注文本</title>
+    
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    
+    <!-- Styles -->
+    <link href="{% static 'css/lib/scrollable/scrollable.min.css' %}" rel="stylesheet">  <!--Themes Jquery Bar Rating-->
+    <link href="{% static 'fontAwesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/mmc-chat.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/nixon.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lobipanel/css/lobipanel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="active">
+                        <a  href="/index/"><i class="ti-home"></i> 首页 </a>
+                    </li>                   
+                            
+                    <li><a href="/tagging/"><i class="ti-tag"></i> 标注主页面</a></li>
+                    <li><a href="/check/"><i class="ti-eye"></i>查看已标注文本</a></li>
+                    <li><a href="/check1/"><i class="ti-pencil"></i> 查看诊疗报告</a></li>
+                    <li><a href="/example1/"><i class="ti-layout-grid2-alt"></i>查看标注说明</a></li>
+
+                    <li><a href="/logout/"><i class="ti-close"></i>登出</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img id="logoImg" src="{% static 'logo/logo.png'%}"  alt="Nixon" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>查看当前完成的标注文本</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="main-content" id="maincontent">
+                    <div class="row" id="updatediv">
+                        <div class="col-lg-12">
+                            <div class="card alert">
+                                <div class="card-header">
+                                    <h4>{{message}}</h4>
+                            
+                                </div>
+                                <div class="card-body">
+                                    <table class="table table-responsive" >
+                                        <thead>
+                                            <tr>
+                                                <th style="font-weight:bold;width: 50px">#</th>
+                                                <th style="font-weight:bold;width: 300px">已完成诊疗报告</th>
+
+                                                <th style="font-weight:bold;width: 50px">操作</th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody id = "rowcount">
+                                        {%for k,v in tagged%}
+                                            <tr id="{{k}}">
+                                                <th scope="row" style="width: 50px">{{k}}</th>
+                                                <td style="width: 300px">{{v}}</td>
+
+                                                <td style="width: 50px">
+                                                <!-- <button id="look{{k}}" name="look" value="{{k}}" type="button" class="btn btn-primary ">查看</button> -->
+                                                <button id="modify{{k}}" name="modify" value="{{k}}" type="button" class="btn btn-primary ">修改</button>
+                                                </td>                                               
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
+                            </div>  
+                            
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /# row -->     
+            </div>
+        </div>
+        <!-- /# container-fluid -->
+    </div>
+    <!-- /# main -->
+    
+    <script src="{% static 'js/lib/jquery.min.js'%}"></script>
+    <!-- jquery vendor -->
+    <script src="{% static 'js/lib/jquery.nanoscroller.min.js'%}"></script>
+    <!-- nano scroller -->
+    <script src="{% static 'js/lib/sidebar.js'%}"></script>
+    <!-- sidebar -->
+    <script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+    <!-- bootstrap -->
+    <script src="{% static 'js/lib/mmc-common.js'%}"></script>
+    <script src="{% static 'js/lib/mmc-chat.js'%}"></script>  
+
+    <script src="{% static 'js/lib/scrollable/holder.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollbar.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollable.min.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/scrollable.init.js'%}"></script><!-- scripit init-->
+    
+    <script src="{% static 'js/scripts.js'%}"></script><!-- scripit init-->
+    
+    <script>
+    $(window).load((function(){
+        
+        // var look_btns = document.getElementsByName("look");
+        var modify_btns = document.getElementsByName("modify");
+        
+
+        
+        $(modify_btns).each(function(index,element){        
+            $(element).on('click', function(){　
+                var val=$(this).val();
+                console.log(val);
+                $.ajax({
+                    type: "post",
+                    url: "/lookandmodify1/",
+                    dataType: "html",
+                    data: {'textid':val,'modify':1},
+                    success: function (data){
+                        document.write(data);
+                    }
+                });
+            });
+        });
+        
+        
+        
+    }));
+
+
+    </script>
+    
+
+</body>
+
+</html>

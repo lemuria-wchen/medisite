@@ -1,0 +1,116 @@
+<div class="main-content" id="maincontent">
+                    <div class="row" id="updatediv" >
+                        <div class="col-lg-12" >
+                        {% block content %}
+                            <div class="card alert nestable-cart" >
+                                <div class="card-header">
+                                    <p id='fatherp' style="font-size:16px"> 待标注对话序号:   <b id='textid' style="display: inline;">{{nowtext_id}}</b> </p>                          
+                                </div>
+                                <div class="card-body" >
+                                    <div class="example box" data-options='{"direction": "vertical", "contentSelector": ">", "containerSelector": ">"}'> 
+                                        <div id="dialog">
+                                            <p style=" font-size:16px">
+                                                <b>疾病：</b>
+                                                {{diagnose}} <br />
+                                                <b>患者提问：</b>
+                                                {{selfreport}}<br /><br />
+                                                <b>对话内容:</b><br />
+                                            {% for dia in dia_text %}
+                                                {{dia.0}}<br />
+                                            {% endfor %}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /# card -->
+                            </div>
+                        {% endblock content%}
+                            <!-- /# column -->
+                        </div>
+                        <div class="col-lg-12" id="tag" style = "height:600px;overflow-x:auto;overflow-y:auto;background: #ffffff">
+                            {%for k,v,p,a,l in cutted%} <!-- k 是unique_id-->
+                                <table class="table table-responsive" id="pstable" style= "width:300px;height:50px;">
+                                {% block main %}
+                                    <thead>
+                                        <tr style="height:10px">
+                                            <th id='uid' scope="row" >{{k}}</th>
+                                            {%for ii,default in l.items%} 
+                                                <th >{{ii}}</th>                                                          
+                                            {% endfor %}
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id = "rowcount">
+                                        <tr id="{{k}}" style="height:10px">
+                                            <td id = 'speaker_{{k}}' scope="row" >{{p}}:</td>
+                                            {%for ss in v%}
+                                                <td name="senttext{{k}}">{{ss}}</td>
+                                            {% endfor %}
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>     
+                                        </tr>
+                                        <tr id="{{k}}" style="height:10px">
+                                            <td id = "act_{{k}}">
+                                                <select id='ACT_{{k}}' name="section1" style="width:100px">
+                                                    <option value="">{{a}}</option>
+                                                    {%for sec in sections_ACT%}
+                                                        <option value="{{sec.0}}">{{sec.1}}</option>
+                                                    {% endfor %}
+                                                </select>
+
+                                            </td>
+                                            {%for ii,default in l.items%}
+                                                <td id = "bio_{{k}}">
+                                                    <select id='BIO_{{k}}_{{ii}}' name="section2" style="width:80px">
+                                                        <option value="*">{{default}}</option>
+                                                        {%for sec in sections_BIO%}
+                                                            <option value="{{sec.0}}">{{sec.1}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </td>
+                                            {% endfor %}
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td> 
+                                        </tr>
+                                        <tr id="{{k}}" style="height:10px">
+                                            <td scope="row" >规范化</td>
+                                            {%for ii,default in l.items%} 
+                                            <td style="width:80px">
+                                                <form  class = form1 style="width:20px; padding: 1px; margin: 1px;" >
+                                                   <input type="text" name="规范化名称" id='norm_{{k}}_{{ii}}' value="" size="3" />
+                                                </form>
+                                            </td>                                             
+                                                
+                                            {% endfor %}
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                        </tr>
+                                    </tbody>
+                                    {% endblock main %}
+                                </table>
+
+                            {% endfor %}
+                    
+
+                        </div>
+                            <!-- <button style="width:15%;margin:10px;float:right;" id="next" class="btn btn-primary btn-flat m-b-30 m-t-30">下一条</button> -->
+                            <!-- <button style="width:15%;margin:10px;float:right;" id="report" class="btn btn-primary btn-flat m-b-30 m-t-30">书写诊疗报告</button> -->
+                            <button style="width:15%;margin:10px;float:right;" id="save" class="btn btn-primary btn-flat m-b-30 m-t-30">保存并提交</button>
+                        
+
+                    </div>
+
+                </div>

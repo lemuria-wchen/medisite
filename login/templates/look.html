@@ -1,0 +1,215 @@
+{% load static %}
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>查看已标注文本</title>
+	
+	<!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+	
+	<!-- Styles -->
+    <link href="{% static 'css/lib/scrollable/scrollable.min.css' %}" rel="stylesheet">  <!--Themes Jquery Bar Rating-->
+    <link href="{% static 'fontAwesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/mmc-chat.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/nixon.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lobipanel/css/lobipanel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="active">
+						<a  href="/index/"><i class="ti-home"></i> 首页 </a>
+                    </li>					
+					
+                      
+                      
+                    <li><a href="/tagging/"><i class="ti-tag"></i> 标注主页面</a></li>
+                    <li><a href="/check/"><i class="ti-eye"></i>查看已标注文本</a></li>
+                    <li><a href="/check1/"><i class="ti-pencil"></i> 查看诊疗报告</a></li>
+                    <li><a href="/example1/"><i class="ti-layout-grid2-alt"></i>查看标注说明</a></li>
+
+                    <li><a href="/logout/"><i class="ti-close"></i>登出</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+	<!-- /# sidebar -->
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img id="logoImg" src="{% static 'logo/logo.png'%}"  alt="Nixon" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>标注主页面</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="main-content" id="maincontent">
+                    <div class="row" id="updatediv" >
+                        <div class="col-lg-12" >
+                        {% block content %}
+                            <div class="card alert nestable-cart" >
+                                <div class="card-header">
+                                    <p id='fatherp' style="font-size:16px"> 文本:   <b id='textid' style="display: inline;">{{unique_id}}</b> </p>                          
+                                </div>
+                                <div class="card-body" style="height:300px;">
+                                    <div class="example box" data-options='{"direction": "vertical", "contentSelector": ">", "containerSelector": ">"}'> 
+                                        <div id="dialog">
+                                            <p id="dia_text" style=" font-size:15px">
+                                            {{sentence}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /# card -->
+                            </div>
+                        {% endblock content%}
+                            <!-- /# column -->
+                        </div>
+                        <div class="col-lg-12" style = "height:600px;overflow-x:auto;overflow-y:auto;background: #ffffff">
+                                <table class="table table-responsive" id="pstable" width="300px" height="40px">
+                                {% block main %}
+                                    <thead>
+                                        <tr>
+                                            <th id='uid' scope="row" >{{unique_id}}</th>
+                                            {%for i,label in label_i.items%} 
+                                                <th style="font-weight:bold">{{i}}</th>                                                          
+                                            {% endfor %}
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id = "rowcount">
+                                        <tr id="{{unique_id}}">
+                                            <td id = 'speaker_{{unique_id}}' scope="row" >{{speaker}}:</td>
+                                            {%for ss in sentence%}
+                                                <td name="senttext{{unique_id}}">{{ss}}</td>
+                                            {% endfor %}
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                         
+                                        </tr>
+                                        <tr id="{{unique_id}}">
+                                            <td id = "act_{{unique_id}}">
+                                                {{dialogue_act}}
+                                            </td>
+                                            {%for i,label in label_i.items%} 
+                                                <td id = "bio_{{unique_id}}">
+                                                    {{label}}                                                     
+                                                </td>
+                                            {% endfor %}
+                                           
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+
+                                            
+                                        </tr>
+                                        <tr id="{{unique_id}}">
+                                            <td scope="row" >规范化</th>
+                                            {%for ii, m  in normalized_i.items %} 
+                                                <td >
+                                                    <form  class = form1 >
+                                                       <input type="text" name="规范化名称" id='norm_{{unique_id}}_{{ii}}' value="{{m}}" size="8" />
+                                                    </form>
+                                                </td>                                             
+                                                
+                                            {% endfor %}
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            
+
+                                        </tr>
+                                    </tbody>
+                                    {% endblock main %}
+                                </table>
+
+
+
+                        </div>
+                       <a href="/check/"><button style="width:15%;margin:10px;float:right;" id="next" class="btn btn-primary">返回</button></a>   
+
+                    </div>
+
+                </div>
+                <!-- /# row -->     
+			</div>
+        </div>
+        <!-- /# container-fluid -->
+    </div>
+    <!-- /# main -->
+	
+    <script src="{% static 'js/lib/jquery.min.js'%}"></script>
+	<!-- jquery vendor -->
+	<script src="{% static 'js/lib/jquery.nanoscroller.min.js'%}"></script>
+	<!-- nano scroller -->
+	<script src="{% static 'js/lib/sidebar.js'%}"></script>
+	<!-- sidebar -->
+	<script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'js/lib/mmc-common.js'%}"></script>
+	<script src="{% static 'js/lib/mmc-chat.js'%}"></script>  
+
+	<script src="{% static 'js/lib/scrollable/holder.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollbar.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollable.min.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/scrollable.init.js'%}"></script><!-- scripit init-->
+	
+    <script src="{% static 'js/scripts.js'%}"></script><!-- scripit init-->
+	
+
+	
+
+</body>
+
+</html>

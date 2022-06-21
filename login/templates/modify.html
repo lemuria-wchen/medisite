@@ -1,0 +1,297 @@
+{% load static %}
+
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>修改标注页面</title>
+    <title>修改标注页面</title>
+	
+	<!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+	
+	<!-- Styles -->
+    <link href="{% static 'css/lib/scrollable/scrollable.min.css' %}" rel="stylesheet">  <!--Themes Jquery Bar Rating-->
+    <link href="{% static 'fontAwesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/mmc-chat.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/nixon.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lobipanel/css/lobipanel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="active">
+						<a  href="/index/"><i class="ti-home"></i> 首页 </a>
+                    </li>
+                    					                      
+                    <li><a href="/tagging/"><i class="ti-tag"></i> 标注主页面</a></li>
+                    <li><a href="/check/"><i class="ti-eye"></i>查看已标注文本</a></li>
+                    <li><a href="/check1/"><i class="ti-pencil"></i> 查看诊疗报告</a></li>
+                    <li><a href="/example1/"><i class="ti-layout-grid2-alt"></i>查看标注说明</a></li>
+
+                    <li><a href="/logout/"><i class="ti-close"></i>登出</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+	<!-- /# sidebar -->
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img id="logoImg" src="{% static 'logo/logo.png'%}"  alt="Nixon" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>修改标注</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="main-content" id="maincontent">
+                    <div class="row" id="updatediv">
+                        <div class="col-lg-12">
+
+                            <div class="card alert nestable-cart">
+                                <div class="card-header">
+									<p id='fatherp' style="font-size:18px"> 待标注文本序号:   <b id='unique_id' style="display: inline;">{{unique_id}}</b> </p>                          
+                                </div>
+                                <div class="card-body">
+                                    <div class="example box" data-options='{"direction": "vertical", "contentSelector": ">", "containerSelector": ">"}'> 
+                                        <div id="fraud">
+                                            <p id="fraudtext" style="font-size:18px">{{sentence}}</p>
+											
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /# card -->
+                            </div>
+			
+                            <!-- /# column -->
+                        </div>	
+						<div class="col-lg-12">
+                            <div class="card alert">
+
+                                <div class="card-body">
+                                    <table class="table table-responsive" id="pstable" width="300px" height="40px">
+                                {% block main %}
+                                    <thead>
+                                        <tr>
+                                            <th id='uid' scope="row" >{{unique_id}}</th>
+                                            {%for i,label in label_i.items%} 
+                                                <th style="font-weight:bold">{{i}}</th>                                                          
+                                            {% endfor %}
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                            <th >&#12288 </th><th >&#12288 </th> <th >&#12288 </th><th >&#12288</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id = "rowcount">
+                                        <tr id="{{unique_id}}">
+                                            <td id = 'speaker_{{unique_id}}' scope="row" >{{speaker}}:</td>
+                                            {%for ss in sentence%}
+                                                <td name="senttext{{unique_id}}">{{ss}}</td>
+                                            {% endfor %}
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                         
+                                        </tr>
+                                        <tr id="{{unique_id}}">
+                                            <td id = "act_{{unique_id}}">
+                                                <select id='ACT_{{unique_id}}' name="section1" style="width:110px">
+                                                    <option value="">{{dialogue_act}}</option>
+                                                    {%for sec in sections_ACT%}
+                                                        <option value="{{sec.0}}">{{sec.1}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </td>
+                                            {%for i,label in label_i.items%}
+                                                <td id = "bio_{{unique_id}}">
+                                                    <select id='BIO_{{unique_id}}_{{i}}' name="section2" style="width:100px">
+                                                        <option value="*">{{label}}</option>
+                                                        {%for sec in sections_BIO%}
+                                                            <option value="{{sec.0}}">{{sec.1}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </td>
+                                            {% endfor %}
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+
+                                            
+                                        </tr>
+                                        <tr id="{{unique_id}}">
+                                            <td scope="row" >规范化</th>
+                                            {%for ii, m  in normalized_i.items %} 
+                                                <td >
+                                                    <form  class = form1 >
+                                                       <input type="text" name="规范化名称" id='norm_{{unique_id}}_{{ii}}' value="{{m}}" size="8" />
+                                                    </form>
+                                                </td>                                             
+                                                
+                                            {% endfor %}
+                                            <td> &#12288 </td><td >&#12288 </td>  <td >&#12288 </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td> &#12288 </td><td >&#12288</td>  <td >&#12288  </td><td > &#12288 </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            <td > </td><td > </td> <td > </td><td > </td>
+                                            
+
+                                        </tr>
+                                    </tbody>
+                                    {% endblock main %}
+                                </table>
+                                </div>
+							
+                            </div>
+								
+							<a href="/check/"><button style="width:15%;margin:10px;float:right;" class="btn btn-primary">返回</button></a>
+							<button style="width:15%;margin:10px;float:right;" id="save" class="btn btn-primary">保存</button>
+				
+							
+                        </div>
+					</div>
+
+                </div>
+                <!-- /# row -->     
+			</div>
+        </div>
+        <!-- /# container-fluid -->
+    </div>
+    <!-- /# main -->
+	
+    <script src="{% static 'js/lib/jquery.min.js'%}"></script>
+	<!-- jquery vendor -->
+	<script src="{% static 'js/lib/jquery.nanoscroller.min.js'%}"></script>
+	<!-- nano scroller -->
+	<script src="{% static 'js/lib/sidebar.js'%}"></script>
+	<!-- sidebar -->
+	<script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'js/lib/mmc-common.js'%}"></script>
+	<script src="{% static 'js/lib/mmc-chat.js'%}"></script>  
+
+	<script src="{% static 'js/lib/scrollable/holder.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollbar.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollable.min.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/scrollable.init.js'%}"></script><!-- scripit init-->
+	
+    <script src="{% static 'js/scripts.js'%}"></script><!-- scripit init-->
+	
+	<script>
+		
+		$(document).on('click','#save',function(){
+			var unique_id = document.getElementById('unique_id').innerText;
+            console.log(unique_id); //unique_id
+
+            var speaker = document.getElementById('speaker_'+unique_id).innerText;
+            console.log(speaker);
+            var ActBios = '';
+
+            //sentence action
+            var act_select = document.getElementById('ACT_'+unique_id); 
+            console.log('act:',act_select);
+            var act_index = act_select.selectedIndex ;
+            console.log(act_index);
+
+            var acttoindex = {症状:"1", 基本信息:"2", 已有检查和治疗:'3', 用药建议:"4",就医建议:"5",注意事项:"6",其他:"7"};
+            var act = act_select.options[act_index].innerText
+            console.log(act);
+            if (act_index == 0) {var sen_act =  acttoindex[act]}
+            else{ var sen_act = act_select.options[act_index].value} // 1----症状
+
+            ActBios = ActBios + sen_act
+            console.log('ActBios:',ActBios);
+            
+            //sentence BIO    // normalization
+            var nk = String;
+            var sen_norm = '';
+            var nk = 'bio_'+unique_id;
+            biolen = $('td#'+nk).length;
+            for (var j = 1; j <biolen+1 ; j++){
+                var bio_select = document.getElementById('BIO_'+unique_id+'_'+j); 
+                var sec_index = bio_select.selectedIndex ;
+                var sec_options = bio_select.options[sec_index].value; // 0:O, 1:I
+                // (sec_options != '*' && sec_options != 1)? x = 1 :x = 0; //是否改变，并且为一个词的开头
+                if (sec_options=='') sec_options = '*'
+                ActBios = ActBios + sec_options;
+                var norm = document.getElementById('norm_'+unique_id+'_'+j).value;
+                if (norm == '') {sen_norm  = sen_norm + '|'}
+                else{sen_norm  = sen_norm + norm+ '|'}
+                
+            }
+            console.log('sen_norm:',sen_norm)
+            var sent = document.getElementsByName('senttext'+unique_id);
+            var sentence ='';
+            for (var j = 0; j <biolen ; j++){
+                sentence = sentence + sent[j].innerText;
+            }
+            console.log('ActBios:',ActBios);
+			
+			$.ajax({
+				async:false,
+				cache: false,
+				type:'POST',
+				url:"/modifytag/",
+				data:{"unique_id":unique_id,"ActBios":ActBios,"sen_norm":sen_norm,
+                            "sentence":sentence,"speaker":speaker},
+				dataType: "json",
+				success:function(data){
+					console.log(data);	
+				}
+			});
+			
+			alert("修改标注成功！")
+			
+		});
+
+
+    </script>
+	
+
+</body>
+
+</html>

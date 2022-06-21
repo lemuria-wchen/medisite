@@ -1,0 +1,177 @@
+{% load static %}
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页</title>
+    <!-- ================= Favicon ================== -->
+
+    <!-- Styles -->
+	<link href="{% static 'css/lib/scrollable/scrollable.min.css' %}" rel="stylesheet">
+    <link href="{% static 'fontAwesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/mmc-chat.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/nixon.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lobipanel/css/lobipanel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<style>
+		a {
+		color:white;
+		}
+	</style>
+</head>
+
+<body>
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="active">
+                        <a  href="/index/"><i class="ti-home"></i> 首页 </a>
+                    </li>
+                      
+                    <li><a href="/tagging/"><i class="ti-tag"></i> 标注主页面</a></li>
+                    <li><a href="/check/"><i class="ti-eye"></i>查看已标注文本</a></li>
+                    <li><a href="/check1/"><i class="ti-pencil"></i> 查看诊疗报告</a></li>
+                    <li><a href="/example1/"><i class="ti-layout-grid2-alt"></i>查看标注说明</a></li>
+
+                    <li><a href="/logout/"><i class="ti-close"></i>登出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo">
+                <a href="/index/">
+                    <img id="logoImg" src="{% static 'logo/logo.png'%}"  alt="Nixon" />
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>首页</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="main-content">
+					<div class="row">
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="stat-widget-two">
+                                    <div class="widget-icon color-3">
+                                        <i class="fas fa-tasks"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-text">已完成标注文本个数</div>
+                                        <div class="stat-digit"> {{complete}}</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow='{{percent1}}' aria-valuemin="0" aria-valuemax="100" style="width: {{percent1}}%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="stat-widget-two">
+                                    <div class="widget-icon color-4">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-text">待标注文本个数</div>
+                                        <div class="stat-digit">{{undo}}</div>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="{{percent2}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percent2}}%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /# column -->
+                    </div>
+				
+					<div class="row">
+                        <div class="col-lg-12">
+                            <div class="card alert nestable-cart">
+                                <div class="card-header">
+                                    <h4>保密协议</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="example box" data-options='{"direction": "vertical", "contentSelector": ">", "containerSelector": ">"}' style="height:400px"> 
+                                        <div >
+                                            <p style="font-size:16px"> 鉴于应对此等秘密信息承担的相关保密责任，本人在此同意严格遵守以下各条款：
+<br/ ><br/ >1、本人同意标注平台向本人披露的全部信息，包括但不限于病例自述、症状诊断、医患对话文本、标注结果、计算机程序，源代码等，不限传达方式及是否为草稿或最终确认稿，无论上述信息是否与过去，目前，和未来的商业活动，研究，生产设计或发展，人员或商业合作活动相关，均为归复旦大数据学院所有的秘密信息，以及复旦大数据学院从第三方处获得但应承担保密责任的信息，统称为“秘密信息”。
+<br/ ><br/ >2、对于上述秘密信息，本人同意：1）应有意识地保护此等秘密信息，并采取所有必要的保密措施；2）不向公众披露此等秘密信息或向第三方披露此等秘密信息；3）未经负担大数据学院书面同意不得在任何情形下使用此等秘密信息；4）不得对秘密信息进行复制，逆向工程，反编译，试图破译原代码及潜在信息。
+<br/ ><br/ >3、本人如应法院或其他政府部门的命令或要求而进行披露秘密信息，本人将会事先书面告知复旦大数据学院并回应所有可行的保密要求。
+<br/ ><br/ >4、本人将采取合理的防范措施保护此等秘密信息。未经复旦大数据学院书面同意，我方将不会以任何形式对秘密信息进行复制（含以纸张或软件或电子文档形式）。
+<br/ ><br/ >5、如此等秘密信息未经授权而被使用或披露，或本人有任何违反本协议的行为，本人将立即书面告知复旦大数据学院，并会以各种形式协助其收回秘密信息，制止秘密信息被进一步侵害。本人同意应复旦大数据学院请求归还秘密信息和/或销毁全部秘密信息副本。
+<br/ ><br/ >6、秘密信息的保密义务于披露之日起十年内有效。
+<br/ ><br/ >7、为了避免不必要的争议，秘密信息中不包括：（a）不违反本协议而已为公众普遍知晓的信息；（b）本人在从复旦大数据学院接到信息以前已拥有或已知但没有义务为其保密的信息；（c）自第三方获得而又无义务为之保密的信息。
+<br/ ><br/ >8、本人在此确认未经授权而进行秘密信息使用或披露都将给复旦大数据学院造成不能挽回的损失和重大的侵害。上述未经授权的披露将使本人或构成不正当竞争的第三方对复旦大数据学院造成的损害都将是不可挽回的损害。除所有法定的赔偿外，复旦大数据学院将有权基于合理的判断而对任何实际或可能发生的违反本协议的行为，向复旦大数据学院所在地人民法院申请禁止令或适当的救济。本人同意就违约行为或强制性义务或未经授权使用或披露秘密信息行为而对复旦大数据学院可能受到的全部损失，侵害，包括但不限于律师费用承担足额的赔偿责任。
+<br/ ><br/ >9、本人在此确认复旦大数据学院疏于行使、怠于行使权利和/或基于本协议或法律规定而获得的补偿并不代表复旦大数据学院放弃此等权利或补偿，或对其他权利或补偿的放弃。单独或部分行使权利和/或基于本协议或法律规定而获得补偿并不妨碍复旦大数据学院进一步行使权利或获得补偿，或采取其他行使权利或获得补偿的行为。
+<br/ ><br/ >10、复旦大数据学院无须对秘密信息的真实性、适用性、完整性和合理性承担责任，以及并未对此做出一切明确表达的或暗含的陈述和担保。复旦大数据学院无须对本人或任何与秘密信息相关的第三方或其对秘密信息的使用行为承担任何责任。
+<br/ ><br/ >11、若本协议任一条款因违反法律法规而无效或无法履行，则除该无效或无法履行部分以外，本协议的其他部分仍然有效。
+</p>	
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /# card -->
+							<button class="btn btn-primary" style="width:15%;margin:10px;float:right;"><a href="/example1/">同意保密条款</a></button>
+                        </div>
+                    </div>
+             
+                </div>   
+            </div>
+		</div>	
+	 </div>
+ </div>
+ <!-- /# container-fluid -->
+</div>
+<!-- /# main -->
+</div>
+<!-- /# content wrap -->
+<script src="{% static 'js/lib/jquery.min.js'%}"></script>
+<!-- jquery vendor -->
+<script src="{% static 'js/lib/jquery.nanoscroller.min.js'%}"></script>
+<!-- nano scroller -->
+<script src="{% static 'js/lib/sidebar.js'%}"></script>
+<!-- sidebar -->
+<script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+<!-- bootstrap -->
+<script src="{% static 'js/lib/mmc-common.js'%}"></script>
+<script src="{% static 'js/lib/mmc-chat.js'%}"></script>
+<script src="{% static 'js/lib/scrollable/holder.js'%}"></script><!-- scripit init-->
+<script src="{% static 'js/lib/scrollable/jquery-asScrollbar.js'%}"></script><!-- scripit init-->
+<script src="{% static 'js/lib/scrollable/jquery-asScrollable.min.js'%}"></script><!-- scripit init-->
+<script src="{% static 'js/lib/scrollable/scrollable.init.js'%}"></script><!-- scripit init-->
+<script src="{% static 'js/scripts.js'%}"></script>
+<!-- scripit init-->
+<script>
+    $(document).ready(function() {
+        $('#lobipanel-custom-control').lobiPanel({
+            reload: false,
+            close: false,
+            editTitle: false
+        });
+    });
+</script>
+</body>
+
+</html>

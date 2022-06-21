@@ -1,0 +1,277 @@
+{% load static %}
+
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>标注主页面</title>
+    <title>标注主页面</title>
+    
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon--> 
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    
+    <!-- Styles -->
+    <link href="{% static 'css/lib/scrollable/scrollable.min.css' %}" rel="stylesheet">  <!--Themes Jquery Bar Rating-->
+    <link href="{% static 'fontAwesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/mmc-chat.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/lib/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/nixon.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/lobipanel/css/lobipanel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+
+
+
+
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <li class="active">
+                        <a  href="/index/"><i class="ti-home"></i> 首页 </a>
+                    </li>                   
+                                      
+                    <li><a href="/tagging/"><i class="ti-tag"></i> 标注主页面</a></li>
+                    <li><a href="/check/"><i class="ti-eye"></i>查看已标注文本</a></li>
+                    <li><a href="/check1/"><i class="ti-pencil"></i> 查看诊疗报告</a></li>
+                    <li><a href="/example1/"><i class="ti-layout-grid2-alt"></i>查看标注说明</a></li>
+
+                    <li><a href="/logout/"><i class="ti-close"></i>登出</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="pull-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img id="logoImg" src="{% static 'logo/logo.png'%}"  alt="FNLP-SDS" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 p-0">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>标注主页面</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# row -->
+                <div class="main-content" id="maincontent">
+                    <div class="row" id="updatediv" >
+                        <div class="col-lg-6" style="height:400px; " >
+                            {% block content %}
+                                <div class="card alert nestable-cart" >
+                                    <div class="card-header">
+                                        <p id='fatherp' style="font-size:15px"> 标注对话序号:   <b id='textid' style="display: inline;">{{nowtext_id}}</b> </p>      
+                                        <div class="example box" style="overflow-y:auto;" data-options='{"direction": "vertical", "contentSelector": ">", "containerSelector": ">"}'> 
+                                            <div id="dialog">
+                                                <p style=" font-size:15px">
+                                                    <b>疾病：</b>
+                                                    {{diagnose}} <br />
+                                                    <b>患者提问：</b>
+                                                    {{selfreport}}<br />
+                                                    <b>对话内容：</b><br />
+                                                {% for dia in dia_text %}
+                                                    &#12288{{dia}}<br />
+                                                {% endfor %}
+                                                </p>
+                                            </div>
+                                        </div>
+                   
+                                    </div>
+                                    
+                                        
+                                    <!-- /# card -->
+                                </div>
+                            {% endblock content%}
+                                <!-- /# column -->
+                        </div>
+
+                    <div class="row" >
+                        <div class="col-lg-6" style="height:190px">
+                            {% block sum %}
+                                <div class="card alert nestable-cart" >
+                                    <div class="card-header">
+                                        <p id = 'sum' style="font-size:15px"> 已标注关键词:   <b id='textid' style="display: inline;">{{nowtext_id}}</b> </p>
+                                        {% for tag in tag_sum %}
+                                            {{tag}}<br />
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            {% endblock sum%} 
+                        </div>
+
+                        <div class="col-lg-6" style="height:190px">
+                            {% block request %}
+                                <div class="card alert nestable-cart" >
+                                    <div class="card-header">
+                                        诊疗报告填写框架:   
+                                                <br/> (1) 主诉： 主要症状或体征
+                                                <br/> (2) 现病史： 主要症状的描述（发病情况，发病时间）
+                                                <br/> (3) 辅助检查：病人已有的检查项目、检查结果、会诊记录等
+                                                <br/> (4) 既往史：既往的健康状况、过去曾经患过的疾病等
+                                                <br/> (5) 诊断：对疾病的诊断
+                                                <br/> (6) 建议：检查建议、药物治疗、注意事项
+                                    </div>
+
+                                </div>
+                            {% endblock request%} 
+                        </div>
+                    </div>
+
+
+                    <div class="row" >
+
+                            <div class="col-lg-12">
+                                {% block WriteReport %}
+                                    <div class="card alert nestable-cart" >
+                                        <div class="card-header">
+                                            <p id = 'request' style="font-size:16px"> 诊疗报告:   </p>
+
+                                            <div class="card-body" >
+                                                <div class="col-md-10">
+                                                <!-- <form>
+                                                   <input type="text" name="填写诊疗报告" id='text' value="" />
+                                                </form> -->
+
+                                               
+                                                <textarea class="form-control" style="height:200px" id ='text' placeholder="请填写诊疗报告">(1) 主诉：
+(2) 现病史：
+(3) 辅助检查：
+(4) 既往史：
+(5) 诊断：
+(6) 建议：</textarea>
+                                                </div class="col-md-10">
+
+
+                                            </div>
+                                            
+                                        </div>
+
+                                    </div>
+                                {% endblock WriteReport%} 
+                            </div>
+                    </div>  
+
+                    <div>
+                        <!-- <button style="width:15%;margin:10px;float:right;" id="next" class="btn btn-primary btn-flat m-b-30 m-t-30">下一条</button> -->
+                        <button style="width:15%;margin:10px;float:right;" id="savereport" class="btn btn-primary btn-flat m-b-30 m-t-30">保存并进入下一组对话</button>
+                    </div>
+                    
+                    </div>
+                </div>
+            
+        </div>
+        <!-- /# container-fluid -->
+    </div>
+    <!-- /# main -->
+
+    
+    <script src="{% static 'js/lib/jquery.min.js'%}"></script>
+    <!-- jquery vendor -->
+    <script src="{% static 'js/lib/jquery.nanoscroller.min.js'%}"></script>
+    <!-- nano scroller -->
+    <script src="{% static 'js/lib/sidebar.js'%}"></script>
+    <!-- sidebar -->
+    <script src="{% static 'js/lib/bootstrap.min.js'%}"></script>
+    <!-- bootstrap -->
+    <script src="{% static 'js/lib/mmc-common.js'%}"></script>
+    <script src="{% static 'js/lib/mmc-chat.js'%}"></script>  
+
+    <script src="{% static 'js/lib/scrollable/holder.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollbar.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/jquery-asScrollable.min.js'%}"></script><!-- scripit init-->
+    <script src="{% static 'js/lib/scrollable/scrollable.init.js'%}"></script><!-- scripit init-->
+    
+    <script src="{% static 'js/scripts.js'%}"></script> <!-- scripit init -->
+    
+    <script>
+
+        $(document).on('click','#savereport',function(){
+            var textid = document.getElementById("textid").innerText;
+            console.log("text id2:"+textid);
+            var text = document.getElementById("text").value;
+            console.log("text:"+text);
+
+
+            $.ajax({
+                async:false,
+                cache: false,
+                type:'POST',
+                url:"/savereport/",
+                data:{'nowtextid':textid,'WReport':text},
+                dataType: "json",
+                success:function(data){
+                    console.log(data);
+                }
+            });
+
+            
+            window.alert('保存成功，进入下一组对话');
+
+            parent.location.href ='/tagging/'
+
+            // $.ajax({
+            //     // async:false,
+            //     type:'POST',
+            //     url:"/tagnext/",
+            //     data:{'nowtextid':textid},
+            //     dataType: "html",
+            //     success:function(result){
+            //         $("#maincontent").html(result);
+            //         // document.write(data);
+            //         console.log("text id2:"+textid);
+            //         parent.location.href = '/tagging/'
+
+            //     },
+            //     error: function(){  
+            //         alert("false");  
+            //     }  
+            // });
+         
+
+
+
+        });
+
+      
+       
+
+
+    </script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+{% load static %}
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>登录</title>
+	
+	<!-- ================= Favicon ================== -->
+	
+	<!-- Styles -->
+    <link href="{% static 'fontAwesome/css/fontawesome-all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/lib/nixon.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body class="bg-primary">
+
+	<div class="Nixon-login">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-lg-offset-3">
+					<div class="login-content">
+						<div class="login-logo">
+							<a href="/index/"><span>医疗对话数据标注</span></a>
+						</div>
+
+						<div class="login-form">
+					
+							<h4>登录</h4>
+							<form action="/login/" method="post">
+								{% if message %}
+									<div class="alert alert-info">{{message}}</div>
+								{% endif %}
+	
+								<div class="form-group">
+									<label>用户名</label>
+									<input type="username" name='username' class="form-control" placeholder="User Name" autofocus required>
+								</div>
+								<div class="form-group">
+									<label>密码</label>
+									<input type="password" name='password' class="form-control" placeholder="Password" required>
+								</div>
+								
+								<button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">登录</button>
+							        <!--
+								<div class="register-link m-t-15 text-center">
+									<p>没有账号 ? <a href="/register/"> 点击注册</a></p>
+								</div>
+                                                                -->
+								{% csrf_token %}
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+
+</html>

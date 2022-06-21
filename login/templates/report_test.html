@@ -1,0 +1,59 @@
+                    <div class="row" id="updatediv" >
+                        <div class="col-lg-12" >
+                            {% block content %}
+                                <div class="card alert nestable-cart" >
+                                    <div class="card-header">
+                                        <p id='fatherp' style="font-size:16px"> 待标注对话序号:   <b id='textid' style="display: inline;">{{nowtext_id}}</b> </p>                          
+                                    </div>
+                                    <div class="card-body" >
+                                        <div class="example box" > 
+                                            <div id="dialog">
+                                                <p style=" font-size:16px">
+                                                    <b>疾病：</b>{{diagnose}} <br />
+                                                    <b>患者提问：</b>{{selfreport}}<br /><br />
+                                                    <b>对话内容：</b><br />
+                                                {% for dia in dia_text %}
+                                                    {{dia}}<br />
+                                                {% endfor %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /# card -->
+                                </div>
+                            {% endblock content%}
+                                <!-- /# column -->
+                        </div>
+                        <div>
+                            {% block sum %}
+                                <div class="card alert nestable-cart" >
+                                    <div class="card-header">
+                                        <p id = 'sum' style="font-size:16px"> 已标注关键词:   <b id='textid' style="display: inline;">{{nowtext_id}}</b> </p>
+                                        {% for tag in tag_sum %}
+                                            {{tag}}<br />
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            {% endblock sum%} 
+                        </div>
+
+                        <div>
+                            {% block request %}
+                                <div class="card alert nestable-cart" >
+                                    <div class="card-header">
+                                        <p id = 'request' style="font-size:16px"> 诊疗报告填写要求:   <b id='textid' style="display: inline;">{{nowtext_id}}</b> </p>
+                                        
+                                    </div>
+
+                                </div>
+                            {% endblock request%} 
+                        </div>
+                        
+                        <div>
+                            <button style="width:15%;margin:10px;float:right;" id="next" class="btn btn-primary btn-flat m-b-30 m-t-30">下一条</button>
+                            <button style="width:15%;margin:10px;float:right;" id="save" class="btn btn-primary btn-flat m-b-30 m-t-30">保存并提交</button>
+                        </div>
+
+
+                    </div>
