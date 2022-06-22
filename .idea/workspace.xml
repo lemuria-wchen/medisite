@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="577c922c-b8ec-4ecd-825a-c9ba017dcdb7" name="Default Changelist" comment="Default Changelist">
+    <list default="true" id="577c922c-b8ec-4ecd-825a-c9ba017dcdb7" name="Default Changelist" comment="update README.md">
+      <change afterPath="$PROJECT_DIR$/login/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/medisite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/medisite/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,8 +119,34 @@
       <updated>1588234997969</updated>
       <workItem from="1588235000764" duration="543000" />
       <workItem from="1655825591882" duration="4205000" />
-      <workItem from="1655830852505" duration="316000" />
+      <workItem from="1655830852505" duration="597000" />
+      <workItem from="1655831503976" duration="163000" />
+      <workItem from="1655831673472" duration="79000" />
+      <workItem from="1655887324713" duration="308000" />
+      <workItem from="1655889395615" duration="1592000" />
     </task>
+    <task id="LOCAL-00001" summary="update README.md">
+      <created>1655831247200</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655831247200</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update README.md">
+      <created>1655831291599</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655831291599</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update README.md">
+      <created>1655831404987</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655831404987</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -163,5 +192,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
 </project>

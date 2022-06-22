@@ -13,9 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+# from django.contrib import admin
+# from django.urls import path, include
+# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+#
+#
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('medisite/', include("medisite.urls")),
+# ]
+#
+# urlpatterns += staticfiles_urlpatterns()
+
+
 # from django.contrib import admin
 # from django.urls import path
-
+#
 # urlpatterns = [
 #     path('admin/', admin.site.urls),
 # ]
@@ -29,20 +43,21 @@ from django.shortcuts import HttpResponse
 from django.conf.urls import url
 from login import views
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls), 
-    path('',views.taghome),
+    path('admin/', admin.site.urls),
+    path('', views.taghome),
     # path('register/',views.register),
-    path('login/',views.login),
-    path('index/',views.index),
-    path('example1/',views.example1),
-    path('taglogistic/',views.taglogistic),
-    path('example2/',views.example2),
-    path('check/',views.check),
-    path('lookandmodify/',views.lookandmodify),
-    path('report/',views.report),
-    path('check1/',views.check_report),
-    path('lookandmodify1/',views.lookandmodify1),
+    path('login/', views.login),
+    path('index/', views.index),
+    path('example1/', views.example1),
+    path('taglogistic/', views.taglogistic),
+    path('example2/', views.example2),
+    path('check/', views.check),
+    path('lookandmodify/', views.lookandmodify),
+    path('report/', views.report),
+    path('check1/', views.check_report),
+    path('lookandmodify1/', views.lookandmodify1),
     path('logout/', views.logout),
     path('tagging/', views.tagging),
     # path('tagnext/', views.tagnext),
