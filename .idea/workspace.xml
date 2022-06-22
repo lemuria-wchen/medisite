@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="577c922c-b8ec-4ecd-825a-c9ba017dcdb7" name="Default Changelist" comment="update README.md">
-      <change afterPath="$PROJECT_DIR$/login/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="577c922c-b8ec-4ecd-825a-c9ba017dcdb7" name="Default Changelist" comment="Add an example test website">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/medisite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/medisite/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +120,7 @@
       <workItem from="1655831503976" duration="163000" />
       <workItem from="1655831673472" duration="79000" />
       <workItem from="1655887324713" duration="308000" />
-      <workItem from="1655889395615" duration="1592000" />
+      <workItem from="1655889395615" duration="1884000" />
     </task>
     <task id="LOCAL-00001" summary="update README.md">
       <created>1655831247200</created>
@@ -146,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655831404987</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add an example test website">
+      <created>1655904691273</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655904691273</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -195,6 +199,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
+    <MESSAGE value="Add an example test website" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add an example test website" />
   </component>
 </project>

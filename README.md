@@ -31,7 +31,7 @@ Run the annotation tool and log in [http://127.0.0.1:8000](http://127.0.0.1:8000
 - Username: test
 - Password: test
 
-We provide a service website for testing, which host on http://210.16.187.147:60028, this website can only be accessed through Fudan University's intranet.
+We provide a service website for testing, which host on http://210.16.187.147:60028, and login the administrator website on [http://210.16.187.147:60028/admin](http://210.16.187.147:60028/admin). 
 
 ```shell
 python manage.py runserver
